@@ -71,7 +71,8 @@ class Runner:
         post_text  = quote + "\n\n"
         if comments:
             post_text += comments + "\n"
-        post_text += source
+        post_text += source + "\n"
+        post_text += "#GNUTerryPratchett, #SpeakHisName, #Discworld" 
 
         post_text = (post_text[:400] + '... ') if len(post_text) > 400 else post_text
 
