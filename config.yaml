@@ -1,0 +1,59 @@
+#############################
+#    Mastodon publish bot   #
+#############################
+
+# App Info
+app:
+  # [String] Name of the app
+  name: "publish"
+  # [String] Nome of data file
+  data_file_name: "data.yaml"
+
+# Mastobot config
+bot:
+  # [String] Name of the app
+  app_name: "state"
+  # [String]  Instance hostname 
+  hostname: "frikiverse.zone"
+  # [String] Access type: Access Token = "AT" | Credentials = "CR" 
+  access_type: "AT"
+
+# Mastobot access token configuration
+access_token:
+  # [String] client id
+  client_id: "AAAAAAAAAAAAAAAAAA"
+  # [String] Client secret
+  secret: "BBBBBBBBBBBBBBBBB"
+  # [String] Access token
+  token: "cccccccccc"
+
+# Mastobot credentials configuration
+credentials:
+  # [Bool] With credentials, force log in
+  force_login: False
+  # [String] Name of the secrets directory
+  secrets_directory: "secrets"
+  # [String] Name of the secrets file path
+  secrets_file_path: "secrets.txt"
+
+# Testing options
+testing:
+  # [Bool] Disable push to Mastodon
+  disable_push: True
+
+# Logging config
+logger:
+  # [Integer] Log level: NOTSET=0 | DEBUG=10 | INFO=20 | WARN=30 | ERROR=40 | CRITICAL=50
+  loglevel: 10
+  # [String] Name of the logger
+  name: "mastopublish_bot"
+  # [Bool] Dump the log into a file
+  to_file: False
+  # [String] Directory of the logger
+  directory: "log"
+  # [String] Filename of the log file
+  filename: "mastopublish_bot.log"
+  # [Bool] Dump the log into a stdout
+  to_stdout: True
+  # [String] Format of the log
+  format: "[%(asctime)s] %(levelname)-8s %(name)-12s %(message)s"
