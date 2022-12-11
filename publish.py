@@ -49,7 +49,7 @@ class Runner:
             self._logger.info("push answer disabled with " + str(data_id))                    
         else:
             self._logger.info("answering notification with " + str(data_id))
-            self.mastodon.status_post(post_text, language="en")
+            self._bot.mastodon.status_post(post_text, language="en")
 
         self._logger.info("end app")
 
