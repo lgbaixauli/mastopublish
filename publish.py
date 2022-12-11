@@ -61,17 +61,17 @@ class Runner:
         data_id  = aleatorio["id"]                    
         quote    = aleatorio["quote"]                    
         comments = aleatorio["comments"]                    
-        origin   = aleatorio["origin"]   
+        source   = aleatorio["source"]   
 
         self._logger.debug("id      : " + str(data_id))                    
         self._logger.debug("quote   : " + quote)                    
         self._logger.debug("comments: " + comments)                     
-        self._logger.debug("origin  : " + origin)   
+        self._logger.debug("source  : " + source)   
          
         post_text  = quote + "\n\n"
         if comments:
             post_text += comments + "\n"
-        post_text += origin
+        post_text += source
 
         post_text = (post_text[:400] + '... ') if len(post_text) > 400 else post_text
 
