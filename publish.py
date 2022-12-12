@@ -21,13 +21,14 @@ class Bot(Mastobot):
 
         action = self._actions["Publish_Terry"]
         quote  = random.choice(action["quotes"]) 
+        text_post = self.find_text(quote)
 
         if self._push_disable:
             self._logger.info("pushing answer disabled with quote " + str(quote["id"]))                    
 
         else:
             self._logger.info("answering with quote " + str(quote["id"]))
-            self.mastodon.status_post(self.find_text(quote), language="en")
+            self.mastodon.status_post(text_post, language="en")
 
         super().run(botname = botname)
 
