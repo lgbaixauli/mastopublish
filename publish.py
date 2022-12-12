@@ -6,71 +6,44 @@ from bundle.mastobot import Mastobot
 from bundle.config import Config
 from bundle.logger import Logger
 
-import yaml
 import random
 
-class Runner:
-    '''
-    Main runner of the app
-    '''
-    def init(self):
+BOT_NAME = "Publishbot"
 
-        self._config     = Config()
-        self._logger     = Logger(self._config).getLogger()
-        self._bot        = Mastobot(self._config)
+class Bot(Mastobot):
 
-        self.init_app_options()
-        self.init_test_options()
+    def __init__(self, botname: str = BOT_NAME) -> None:
 
-        self._logger.info("init app")
-
-        return self
-
-
-    def init_app_options(self):
-
-        data_file_name = self._config.get("app.data_file_name") 
-        with open(data_file_name, 'r') as stream:
-            self._data  = yaml.safe_load(stream)
+        super().__init__(botname = botname)
         
 
-    def init_test_options (self):
+    def run(self, botname: str = BOT_NAME) -> None:
 
-        self._push_disable    = self._config.get("testing.disable_push")
+        action = self._actions["Publish_Terry"]
+        quote  = random.choice(action["quotes"]) 
 
+        if self._push_disable:
+            self._logger.info("pushing answer disabled with quote " + str(quote["id"]))                    
 
-    def run(self):
-
-        self._logger.debug ("runing app")
-
-        post_text, data_id = self.publish_text()
-
-        if self._config.get("testing.disable_push"):
-            self._logger.info("push answer disabled with " + str(data_id))                    
         else:
-            self._logger.info("answering notification with " + str(data_id))
-            self._bot.mastodon.status_post(post_text, language="en")
+            self._logger.info("answering with quote " + str(quote["id"]))
+            self.mastodon.status_post(self.find_text(quote), language="en")
 
-        self._logger.info("end app")
+        super().run(botname = botname)
 
 
-    def publish_text(self):        
+    def find_text(self, quote):        
     
-        aleatorio = random.choice(self._data) 
+        text     = quote["text"]                    
+        comments = quote["comments"]                    
+        source   = quote["source"]   
 
-        data_id  = aleatorio["id"]                    
-        quote    = aleatorio["quote"]                    
-        comments = aleatorio["comments"]                    
-        source   = aleatorio["source"]   
-
-        self._logger.debug("id      : " + str(data_id))                    
-        self._logger.debug("quote   : " + quote)                    
+        self._logger.debug("text    : " + text)                    
         self._logger.debug("comments: " + comments)                     
         self._logger.debug("source  : " + source)   
          
-        post_text  = quote + "\n\n"
-        if comments:
-            post_text += comments + "\n"
+        post_text  = text + "\n\n"
+        if comments: post_text += comments + "\n"
         post_text += source + "\n\n"
         post_text += "#GNUTerryPratchett, #SpeakHisName, #Discworld" 
 
@@ -78,10 +51,10 @@ class Runner:
 
         self._logger.debug ("answer text\n" + post_text)
 
-        return post_text, aleatorio["id"]
+        return post_text
 
 
 # main
 
 if __name__ == '__main__':
-    Runner().init().run()
+    Bot().run()

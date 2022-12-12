@@ -6,8 +6,8 @@
 app:
   # [String] Name of the app
   name: "publish"
-  # [String] Nome of data file
-  data_file_name: "data.yaml"
+  # [String] Name of the actions file
+  actions_file_name: "actions.yaml"
 
 # Mastobot config
 bot:
@@ -21,11 +21,11 @@ bot:
 # Mastobot access token configuration
 access_token:
   # [String] client id
-  client_id: "AAAAAAAAAAAAAAAAAA"
+  client_id: ""
   # [String] Client secret
-  secret: "BBBBBBBBBBBBBBBBB"
+  secret: ""
   # [String] Access token
-  token: "cccccccccc"
+  token: ""
 
 # Mastobot credentials configuration
 credentials:
@@ -34,12 +34,12 @@ credentials:
   # [String] Name of the secrets directory
   secrets_directory: "secrets"
   # [String] Name of the secrets file path
-  secrets_file_path: "secrets.txt"
+  secrets_file_name: "secrets.txt"
 
 # Testing options
 testing:
   # [Bool] Disable push to Mastodon
-  disable_push: False
+  disable_push: True
 
 # Logging config
 logger:
