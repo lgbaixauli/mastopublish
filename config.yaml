@@ -39,7 +39,7 @@ credentials:
 # Testing options
 testing:
   # [Bool] Disable push to Mastodon
-  disable_push: False
+  disable_post: False
 
 # Logging config
 logger:
