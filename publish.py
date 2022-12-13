@@ -24,7 +24,7 @@ class Bot(Mastobot):
         quote    = random.choice(action["quotes"])
         langauge = "en" 
  
-        self.publish_toot (self.find_text(quote), langauge, quote["id"])
+        self.post_toot (self.find_text(quote), langauge, quote["id"])
 
         super().run(botname = botname)
 
