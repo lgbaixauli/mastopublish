@@ -16,3 +16,10 @@ ENV/
 env.bak/
 venv.bak/
 
+# Bot directories
+secrets
+secrets*
+secrets/
+log
+prova*
+

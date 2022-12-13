@@ -2,33 +2,29 @@
 # Mastopublish, bot para publicar datos en Mastodon
 ###  
 
-from bundle.mastobot import Mastobot
+from mastobot import Mastobot
 from bundle.config import Config
 from bundle.logger import Logger
 
 import random
 
-BOT_NAME = "Publishbot"
+BOT_NAME = "Terrybot"
 
 class Bot(Mastobot):
 
     def __init__(self, botname: str = BOT_NAME) -> None:
 
         super().__init__(botname = botname)
-        
+        self.init_publish_bot()
+
 
     def run(self, botname: str = BOT_NAME) -> None:
 
-        action = self._actions["Publish_Terry"]
-        quote  = random.choice(action["quotes"]) 
-        text_post = self.find_text(quote)
-
-        if self._push_disable:
-            self._logger.info("pushing answer disabled with quote " + str(quote["id"]))                    
-
-        else:
-            self._logger.info("answering with quote " + str(quote["id"]))
-            self.mastodon.status_post(text_post, language="en")
+        action   = self._actions["Publish_Terry"]
+        quote    = random.choice(action["quotes"])
+        langauge = "en" 
+ 
+        self.publish_toot (self.find_text(quote), langauge, quote["id"])
 
         super().run(botname = botname)
 
