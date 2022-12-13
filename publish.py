@@ -2,7 +2,7 @@
 # Mastopublish, bot para publicar datos en Mastodon
 ###  
 
-from mastobot import Mastobot
+from bundle.mastobot import Mastobot
 from bundle.config import Config
 from bundle.logger import Logger
 
