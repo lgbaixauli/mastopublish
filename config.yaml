@@ -21,11 +21,11 @@ bot:
 # Mastobot access token configuration
 access_token:
   # [String] client id
-  client_id: ""
+  client_id: "aaa"
   # [String] Client secret
-  secret: ""
+  secret: "bbb"
   # [String] Access token
-  token: ""
+  token: "ccc"
 
 # Mastobot credentials configuration
 credentials:
@@ -40,6 +40,10 @@ credentials:
 testing:
   # [Bool] Disable push to Mastodon
   disable_post: False
+  # [Bool] force private mention
+  force_mention: False
+  # [Bool] With credentials, force log in
+  user_mention: "none"
 
 # Logging config
 logger:
