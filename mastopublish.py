@@ -41,7 +41,9 @@ class Bot(Mastobot):
         self._logger.debug("source  : " + source)   
          
         post_text  = text + "\n\n"
-        if comments: post_text += comments + "\n"
+        if comments != "":
+             post_text += comments + "\n"
+
         post_text += source + "\n\n"
 
         hashtag  = "#GNUTerryPratchett, #SpeakHisName, #Discworld" 
