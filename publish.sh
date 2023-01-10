@@ -3,4 +3,4 @@
 cd /home/user_name/mastopublish/
 source .venv/bin/activate
 
-python3 publish.py
+python3 mastopublish.py
