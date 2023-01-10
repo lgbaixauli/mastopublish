@@ -1,7 +1,3 @@
-######################
-#  list of actions   #
-######################
-
 Publish_Terry:
     quotes:  !!python/tuple
         -  !!python/tuple [1, "As far as I'm aware I'm not specifically banned anywhere in the USA, and am rather depressed about it.  Surely some of you guys can do *something?*", "", "Terry Pratchett, alt.books.pratchett"]
